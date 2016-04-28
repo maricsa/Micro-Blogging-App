@@ -12,3 +12,9 @@
 <input id="button" type="submit">	
 </form>
 </div>
+
+<% @posts.reverse.each do |x| %>
+<h2><%= x.title %></h2>
+<p><%= x.body %></p>
+<br>
+<% end %>

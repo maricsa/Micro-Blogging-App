@@ -37,13 +37,18 @@ get '/profile' do
 	erb :profile
 end
 
+get '/home' do
+	@posts = Post.last(10)
+	erb :home
+end
+
 
 post '/sign-in' do
 	@user = User.where(username: params[:username]).first
 	if @user && @user.password == params[:password]
 		session[:user_id] = @user.id
 		flash[:notice] = "You are signed in successfully."
-		erb :home
+		redirect '/home'
 	else
 		flash[:alert] = "There was a problem signing you in."
 		erb :login
@@ -63,7 +68,11 @@ post '/sign-up' do
 end
 
 post '/new-post' do
-	@post = Posts.create!(user_id: current_user.id, body: params[:body], title: params[:title])
+	@post = Post.create!(user_id: current_user.id, body: params[:body], title: params[:title])
 
-	erb :profile
+	redirect '/home'
 end
+
+
+# post '/post-edit' do
+# 	@post = Posts.edit
