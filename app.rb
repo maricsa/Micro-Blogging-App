@@ -59,3 +59,11 @@ post '/sign-up' do
 		flash[:notice] = "Thank you for signing up!"
 		erb :home
 end
+
+post '/new-post' do
+	@post = Posts.create!(user_id: current_user.id, body: params[:body], title: params[:title])
+	erb :profile
+end
+
+
+
