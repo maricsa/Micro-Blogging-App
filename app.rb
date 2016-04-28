@@ -21,7 +21,14 @@ end
 
 get '/' do
 	@users = User.all
-	erb :home
+	# erb :home
+
+	# if current_user  
+	# 	erb :home
+	# else
+	# 	redirect '/sign-in'
+	# end
+
 end
 
 post '/sign-in' do
