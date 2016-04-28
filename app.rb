@@ -21,7 +21,7 @@ end
 
 get '/' do
 	@users = User.all
-	erb :home
+	erb :login
 end
 
 post '/sign-in' do
@@ -29,8 +29,9 @@ post '/sign-in' do
 	if @user && @user.password == params[:password]
 		session[:user_id] = @user.id
 		flash[:notice] = "You are signed in successfully."
+		erb :home
 	else
 		flash[:alert] = "There was a problem signing you in."
+		erb :login
 	end
-	redirect '/'
 end
