@@ -25,16 +25,23 @@ get '/' do
 	erb :login
 end
 
+
 get '/logout' do
 	session.clear
 	flash[:notice] = "You have successfully signed out of your session."
 	erb :login
 end
 
+
 get '/profile' do
-	
 	@posts = current_user.posts
 	erb :profile
+end
+
+
+get '/home' do
+	@posts = Post.last(10)
+	erb :home
 end
 
 
@@ -43,7 +50,7 @@ post '/sign-in' do
 	if @user && @user.password == params[:password]
 		session[:user_id] = @user.id
 		flash[:notice] = "You are signed in successfully."
-		erb :home
+		redirect '/home'
 	else
 		flash[:alert] = "There was a problem signing you in."
 		erb :login
@@ -63,28 +70,7 @@ post '/sign-up' do
 end
 
 post '/new-post' do
-	@post = Posts.create!(user_id: current_user.id, body: params[:body], title: params[:title])
+	@post = Post.create!(user_id: current_user.id, body: params[:body], title: params[:title])
 
 	erb :profile
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 00c566ced5710106a76c2ff44631751e96b423c8
