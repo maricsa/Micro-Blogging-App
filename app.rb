@@ -5,10 +5,10 @@ require './models'
 require 'bundler/setup'
 require 'rack-flash'
 
-enable  :sessions
+enable :sessions
 use Rack::Flash, :sweep => true
 
-set :database, 'sqlite3:microblog.sqlite3'
+configure(:development){set :database, 'sqlite3:microblog.sqlite3'}
 #will set logins to a session
 set :sessions, true
 
@@ -19,10 +19,12 @@ def current_user
 	end   
 end
 
+
 get '/' do
 	@users = User.all
 	erb :login
 end
+
 
 post '/sign-in' do
 	@user = User.where(username: params[:username]).first
@@ -34,4 +36,8 @@ post '/sign-in' do
 		flash[:alert] = "There was a problem signing you in."
 		erb :login
 	end
+end
+
+post '/sign-up' do
+	@user = User.create!(fname: params[:fname], lname: params[:lname],email: params[:email], username: params[:username], password: params[:password], age: params[:age], location: params[:location])
 end
