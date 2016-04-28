@@ -1,13 +1,17 @@
 body {
 	margin: 0 auto;
-	background-color: #d9d9d9;
+	background-color: white;
 	text-align: center;
 
 }
 
 img {
-	width: 200px;
-	height: 200px;
+	width: 50px;
+	height: 50px;
+}
+
+#button {
+	margin-top: 30px;
 }
 
 #wrapper{
@@ -20,7 +24,11 @@ img {
 	width: 400px;
 	height: 300px;
 	border:2px solid black;
-	margin-left: 530px;
-	background-color: #F5B7B1;
+	margin-left: 200px;
+	background-color: white;
 
+}
+
+.button2 {
+	margin-top: 5px;
 }
