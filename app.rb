@@ -41,3 +41,29 @@ end
 post '/sign-up' do
 	@user = User.create!(fname: params[:fname], lname: params[:lname],email: params[:email], username: params[:username], password: params[:password], age: params[:age], location: params[:location])
 end
+
+post '/new-post' do
+	@user = current_user
+	@post = Post.create(body: params[:body], title: params[:title])
+	erb :profile
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
