@@ -25,6 +25,12 @@ get '/' do
 	erb :login
 end
 
+get '/logout' do
+	session.clear
+	flash[:notice] = "You have successfully signed out of your session."
+	erb :login
+end
+
 
 post '/sign-in' do
 	@user = User.where(username: params[:username]).first
@@ -38,6 +44,13 @@ post '/sign-in' do
 	end
 end
 
+
 post '/sign-up' do
-	@user = User.create!(fname: params[:fname], lname: params[:lname],email: params[:email], username: params[:username], password: params[:password], age: params[:age], location: params[:location])
+	#THE CODE below is an attempt to validate. Fix this later if you have time.
+	# if params[:fname] = "" or params[:lname] = "" or params[:email] = "" or params[:username] = "" or params[:password] = "" or params[:age] = "" or params[:location] = ""
+	# 	flash[:alert] = "There was a problem signing you in."
+	# 	erb :login
+@user = User.create!(fname: params[:fname], lname: params[:lname],email: params[:email], username: params[:username], password: params[:password], age: params[:age], location: params[:location])
+		flash[:notice] = "Thank you for signing up!"
+		erb :home
 end
