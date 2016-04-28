@@ -32,7 +32,8 @@ get '/logout' do
 end
 
 get '/profile' do
-	@user = current_user
+	
+	@posts = current_user.posts
 	erb :profile
 end
 
