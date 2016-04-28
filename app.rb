@@ -31,6 +31,11 @@ get '/logout' do
 	erb :login
 end
 
+get '/profile' do
+	@user = current_user
+	erb :profile
+end
+
 
 post '/sign-in' do
 	@user = User.where(username: params[:username]).first
