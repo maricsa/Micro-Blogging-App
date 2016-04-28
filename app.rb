@@ -52,6 +52,7 @@ end
 
 
 post '/sign-up' do
+
 	#THE CODE below is an attempt to validate. Fix this later if you have time.
 	# if params[:fname] = "" or params[:lname] = "" or params[:email] = "" or params[:username] = "" or params[:password] = "" or params[:age] = "" or params[:location] = ""
 	# 	flash[:alert] = "There was a problem signing you in."
@@ -63,8 +64,27 @@ end
 
 post '/new-post' do
 	@post = Posts.create!(user_id: current_user.id, body: params[:body], title: params[:title])
+
 	erb :profile
 end
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+>>>>>>> 00c566ced5710106a76c2ff44631751e96b423c8
