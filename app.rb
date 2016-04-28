@@ -68,23 +68,5 @@ post '/new-post' do
 	erb :profile
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 00c566ced5710106a76c2ff44631751e96b423c8
+# post '/post-edit' do
+# 	@post = Posts.edit
