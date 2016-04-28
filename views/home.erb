@@ -1,8 +1,13 @@
+<h1>HOME</h1>
+
+<a href="/logout">Logout</a>
 
 
-<form id="post" action="/home" method="post">
-<textarea id="post" class="input" name="post" rows="7" cols="150" size="150"></textarea>
+
+
+<form id="post" method="POST" action="/new-post">
+<textarea id="title" class='input' name='title' rows="1" cols='150' size="20"></textarea><br>
+<textarea id="post" class="input" name="body" rows="7" cols="150" size="150"></textarea>
 <input type="submit">
 	
 </form>
-

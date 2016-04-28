@@ -25,6 +25,17 @@ get '/' do
 	erb :login
 end
 
+get '/logout' do
+	session.clear
+	flash[:notice] = "You have successfully signed out of your session."
+	erb :login
+end
+
+get '/profile' do
+	@user = current_user
+	erb :profile
+end
+
 
 post '/sign-in' do
 	@user = User.where(username: params[:username]).first
@@ -38,13 +49,21 @@ post '/sign-in' do
 	end
 end
 
+
 post '/sign-up' do
-	@user = User.create!(fname: params[:fname], lname: params[:lname],email: params[:email], username: params[:username], password: params[:password], age: params[:age], location: params[:location])
+
+	#THE CODE below is an attempt to validate. Fix this later if you have time.
+	# if params[:fname] = "" or params[:lname] = "" or params[:email] = "" or params[:username] = "" or params[:password] = "" or params[:age] = "" or params[:location] = ""
+	# 	flash[:alert] = "There was a problem signing you in."
+	# 	erb :login
+@user = User.create!(fname: params[:fname], lname: params[:lname],email: params[:email], username: params[:username], password: params[:password], age: params[:age], location: params[:location])
+		flash[:notice] = "Thank you for signing up!"
+		erb :home
 end
 
 post '/new-post' do
-	@user = current_user
-	@post = Post.create(body: params[:body], title: params[:title])
+	@post = Posts.create!(user_id: current_user.id, body: params[:body], title: params[:title])
+
 	erb :profile
 end
 
@@ -66,4 +85,5 @@ end
 
 
 
-
+=======
+>>>>>>> 00c566ced5710106a76c2ff44631751e96b423c8
