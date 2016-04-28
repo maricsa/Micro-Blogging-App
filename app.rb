@@ -38,6 +38,11 @@ get '/profile' do
 	erb :profile
 end
 
+get '/home' do
+	@posts = Post.last(10)
+	erb :home
+end
+
 
 get '/home' do
 	@posts = Post.last(10)
@@ -72,5 +77,5 @@ end
 post '/new-post' do
 	@post = Post.create!(user_id: current_user.id, body: params[:body], title: params[:title])
 
-	erb :profile
+	redirect '/home'
 end

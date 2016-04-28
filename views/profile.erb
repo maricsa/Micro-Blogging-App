@@ -1,9 +1,16 @@
 <h1>PROFILE</h1>
 
 
-<h1> <%= current_user.username %> </h1>
+<h2> 
+Name: <%= current_user.fname %> <%= current_user.lname %> 
+<br>
+Location: <%= current_user.location %> 
+<br>
+Age: <%= current_user.age %> 
+</h2>
 
-<% @posts.each do |x| %>
+
+<% @post.each do |x| %>
 <h2><%= x.title %></h2>
 <p><%= x.body %></p>
 <br>
