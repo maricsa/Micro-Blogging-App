@@ -39,11 +39,5 @@ post '/sign-in' do
 end
 
 post '/sign-up' do
-	@user = User.create!(fname: params[:fname])
-	User.create!(lname: params[:lname])
-	User.create!(email: params[:email])
-	User.create!(username: params[:username])
-	User.create!(password: params[:password])
-	User.create!(age: params[:age])
-	User.create!(location: params[:location])
+	@user = User.create!(fname: params[:fname], lname: params[:lname],email: params[:email], username: params[:username], password: params[:password], age: params[:age], location: params[:location])
 end
