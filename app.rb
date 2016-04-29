@@ -97,8 +97,10 @@ post '/profile-update' do
 end
 
 
-post '/delete-account' do
-@user = current_user.delete
+get '/delete' do
+	@user = current_user
+	@user.delete
+	session.clear
 	flash[:notice] = "Your account has been deleted."
 	redirect '/'
 end
