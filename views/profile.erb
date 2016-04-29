@@ -9,9 +9,12 @@ Location: <%= current_user.location %>
 Age: <%= current_user.age %> 
 </h2>
 
-
-<% @post.each do |x| %>
+<% @posts.each do |x| %>
 <h2><%= x.title %></h2>
 <p><%= x.body %></p>
 <br>
 <% end %>
+
+<br>
+<a href="/profileupdate">Update Your Profile Here</a>
+<br>
