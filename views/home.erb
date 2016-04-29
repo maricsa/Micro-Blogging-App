@@ -1,21 +1,24 @@
-<h1>HOME</h1>
+<div id="prof">
 
-<a href="/logout">Logout</a>
+	<h1>HOME</h1>
+
+	<a href="/logout">Logout</a>
 
 
 
-<div class="form">
-<form id="post" method="POST" action="/new-post">
+	<div class="form">
+	<form id="post" method="POST" action="/new-post">
 
-<textarea id="title" class='input' name='title' rows="1" cols='50' size="20"></textarea><br>
-<textarea id="post" class="input" name="body" maxlength="150"></textarea>
+	<textarea id="title" class='input' name='title' rows="1" cols='50' size="20"></textarea><br>
+	<textarea id="post" class="input" name="body" maxlength="150"></textarea>
 
-<input id="button" type="submit">	
-</form>
+	<input id="button" type="submit">	
+	</form>
+	</div>
+
+	<% @posts.reverse.each do |x| %>
+	<h2><%= x.title %></h2>
+	<p><%= x.body %></p>
+	<br>
+	<% end %>
 </div>
-
-<% @posts.reverse.each do |x| %>
-<h2><%= x.title %></h2>
-<p><%= x.body %></p>
-<br>
-<% end %>
