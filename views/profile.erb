@@ -1,3 +1,14 @@
+
+<head>
+	<title>Cinematography Blog</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Raleway|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	<script src="js/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+
+<body id='profile-body'>
 <h1>PROFILE</h1>
 
 <nav>
@@ -9,25 +20,32 @@
 </nav>
 
 
-<h2> 
-Name: <%= current_user.fname %> <%= current_user.lname %> 
-<br>
-Location: <%= current_user.location %> 
-<br>
-Age: <%= current_user.age %> 
-</h2>
+<div id='profile-info'>
+	<h2> 
+	Name: <%= current_user.fname %> <%= current_user.lname %> 
+	<br>
+	Location: <%= current_user.location %> 
+	<br>
+	Age: <%= current_user.age %> 
+	</h2>
+	<br>
 
-<<<<<<< HEAD
+		<div id='account-editors'>
+			<a href="/profileupdate">Update Your Profile Here</a>
+			<br>
+			<a href="/delete-account">Delete Your Account Here</a>
+		</div>
 
-=======
->>>>>>> 47710b87d8789cf8f42b7add21802dd0758d45b7
-<% @posts.each do |x| %>
-<h2><%= x.title %></h2>
-<p><%= x.body %></p>
-<br>
-<% end %>
+</div>
 
-<br>
-<a href="/profileupdate">Update Your Profile Here</a>
-<br>
-<a href="/delete-account">Delete Your Account Here</a>
+
+<div id='profile-blogs'>
+	<% @posts.reverse.each do |x| %>
+		<h2><%= x.title %></h2>
+		<p><%= x.body %></p>
+		<br>
+	<% end %>
+</div>
+
+
+</body>

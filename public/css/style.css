@@ -3,8 +3,8 @@ body {
 	background-color: white;
 	text-align: center;
 	font-family:'Permanent Marker', cursive;
-	background-image: url(http://media.the-digital-picture.com/Images/News/2013/Canon-Big-White-Lenses-with-Hoods-Spring-2013.jpg);
-	background-size: 100%;
+/*	background-image: url(http://media.the-digital-picture.com/Images/News/2013/Canon-Big-White-Lenses-with-Hoods-Spring-2013.jpg);
+	background-size: 100%;*/
 
 
 }
@@ -121,6 +121,41 @@ ul {
 }
 
 /*------*/
+
+/*------ Profile Page ----------*/
+
+#profile-body {
+	background-color: white;
+}
+
+#profile-info {
+	font-family: 'Raleway', sans-serif;
+	background-color: #fad416;
+	float: left;
+	margin-left: 5%;
+	margin-top: 50px;
+	padding: 10px;
+	text-align: left;
+}
+
+#account-editors {
+	text-align: center;
+}
+
+#profile-blogs {
+	font-family: 'Raleway', sans-serif;
+	background-color: #fad416;
+	float: left;
+	margin-left: 3%;
+	margin-top: 50px;
+	padding: 10px;
+	width: 60%;
+	min-width: 300px;
+	word-wrap: break-word;
+}
+
+
+/*--------*/
 
 
 
