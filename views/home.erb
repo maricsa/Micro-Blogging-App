@@ -1,4 +1,5 @@
-<div id="prof">
+
+<body id="homebody">
 
 
 	<h1>HOME</h1>
@@ -22,13 +23,15 @@
 	<textarea id="title" class='input' name='title' rows="1" cols='50' size="20"></textarea><br>
 	<textarea id="post" class="input" name="body" maxlength="150"></textarea>
 
-	<input id="button" type="submit">	
+	<input id="button3" type="submit">	
 	</form>
 	</div>
-
+	
+<div id="postbody">
 	<% @posts.reverse.each do |x| %>
 	<h2><%= x.title %></h2>
 	<p><%= x.body %></p>
 	<br>
 	<% end %>
 </div>
+
