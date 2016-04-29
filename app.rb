@@ -44,22 +44,16 @@ get '/home' do
 	erb :home
 end
 
+
 get '/profileupdate' do
 	@user = current_user
 	erb :profileupdate
 end 
 
 
-post '/sign-in' do
-	@user = User.where(username: params[:username]).first
-	if @user && @user.password == params[:password]
-		session[:user_id] = @user.id
-		flash[:notice] = "You are signed in successfully."
-		redirect '/home'
-	else
-		flash[:alert] = "There was a problem signing you in."
-		redirect '/'
-	end
+get '/delete-account' do
+	@user = current_user
+	erb :accountdelete
 end
 
 
@@ -76,10 +70,16 @@ post '/sign-up' do
 end
 
 
-post '/profile-update' do
-@user = current_user.update(fname: params[:fname], lname: params[:lname],email: params[:email], username: params[:username], password: params[:password], age: params[:age], location: params[:location])
-		flash[:notice] = "Your profile has been updated."
-		redirect '/profile'
+post '/sign-in' do
+	@user = User.where(username: params[:username]).first
+	if @user && @user.password == params[:password]
+		session[:user_id] = @user.id
+		flash[:notice] = "You are signed in successfully."
+		redirect '/home'
+	else
+		flash[:alert] = "There was a problem signing you in."
+		redirect '/'
+	end
 end
 
 
@@ -88,3 +88,23 @@ post '/new-post' do
 
 	redirect '/home'
 end
+
+
+post '/profile-update' do
+@user = current_user.update(fname: params[:fname], lname: params[:lname],email: params[:email], username: params[:username], password: params[:password], age: params[:age], location: params[:location])
+		flash[:notice] = "Your profile has been updated."
+		redirect '/profile'
+end
+
+
+post '/delete-account' do
+@user = current_user.delete
+	flash[:notice] = "Your account has been deleted."
+	redirect '/'
+end
+
+
+
+
+
+

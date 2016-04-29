@@ -1,5 +1,13 @@
 <h1>PROFILE</h1>
 
+<nav>
+	<ul>
+		<li><a href="/home">Home</a></li>
+		<li><a class="active" href="/profile">My Profile</a></li>
+		<li><a href="/logout">Logout</a></li>
+	</ul>
+</nav>
+
 
 <h2> 
 Name: <%= current_user.fname %> <%= current_user.lname %> 
@@ -18,3 +26,4 @@ Age: <%= current_user.age %>
 <br>
 <a href="/profileupdate">Update Your Profile Here</a>
 <br>
+<a href="/delete-account">Delete Your Account Here</a>
