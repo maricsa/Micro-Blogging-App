@@ -10,37 +10,24 @@
 <body id="homebody">
 
 
-	<h1>HOME</h1>
+	<h1>ALL MEMBERS</h1>
 
 <nav>
 	<ul>
-		<li><a class="active" href="/home">Home</a></li>
+		<li><a href="/home">Home</a></li>
 		<li><a href="/profile">My Profile</a></li>
-		<li><a href='/members'>All Members</a></li>
+		<li><a class='active' href='/members'>All Members</a></li>
 		<li><a href="/logout">Logout</a></li>
 	</ul>
 </nav>
 
-
-	<div class="form">
-	<form id="post" method="POST" action="/new-post">
-
-	Title: <textarea id="title" class='input' name='title' rows="1" cols='50' size="20"></textarea>
-	<br>
-	Post: <textarea id="post" class="input" name="body" maxlength="150"></textarea>
-	<br>
-<br>
-	<input id="button3" type="submit">	
-	</form>
-	</div>
 	
 <div id="postbody">
-	<% @posts.reverse.each do |x| %>
+	<% @users.reverse.each do |x| %>
 		<div id='recent-post'>
-			<h2><%= x.title %></h2>
-			<p><%= x.body %></p>
+			<a href="/<%= x.id %>">
+			<h2><%= x.username %></h2>
 		</div>
 	<br>
 	<% end %>
 </div>
-

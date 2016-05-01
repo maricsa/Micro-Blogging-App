@@ -1,4 +1,3 @@
-
 <head>
 	<title>Cinematography Blog</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -9,16 +8,37 @@
 
 
 <body id='profile-body'>
+
 <h1>PROFILE</h1>
 
 <nav>
 	<ul>
 		<li><a href="/home">Home</a></li>
 		<li><a class="active" href="/profile">My Profile</a></li>
+		<li><a href='/members'>All Members</a></li>
 		<li><a href="/logout">Logout</a></li>
 	</ul>
 </nav>
 
+
+<div id='profile-username'>
+		<h1>Hey, <%= current_user.username %>!</h1>
+</div>
+
+
+<div id="profile-poster">
+	<form method="POST" action="/new-post-profile">
+			<p>Title:</p>
+			<textarea id="profile-poster-title" class='input' name='title' rows="1" cols='50' maxlength="20"></textarea>
+			<br>
+			Post: <textarea id="profile-poster-post" class="input" name="body" maxlength="150"></textarea>
+			<br>
+			<br>
+			<input id="button3" type="submit">	
+	</form>
+</div>
+
+<div id='wrapper2'>
 
 <div id='profile-info'>
 	<h2> 
@@ -41,10 +61,16 @@
 
 <div id='profile-blogs'>
 	<% @posts.reverse.each do |x| %>
+
+	<div id='recent-post'>
 		<h2><%= x.title %></h2>
 		<p><%= x.body %></p>
+	</div>
 		<br>
+	
+
 	<% end %>
+</div>
 </div>
 
 

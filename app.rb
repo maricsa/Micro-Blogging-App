@@ -26,10 +26,9 @@ get '/' do
 end
 
 
-get '/logout' do
-	session.clear
-	flash[:notice] = "You have successfully signed out of your session."
-	erb :login
+get '/home' do
+	@posts = Post.last(10)
+	erb :home
 end
 
 
@@ -39,9 +38,22 @@ get '/profile' do
 end
 
 
-get '/home' do
-	@posts = Post.last(10)
-	erb :home
+get '/members' do
+	@users = User.all
+	erb :members
+end
+
+
+get '/:id' do
+	@user = User.find(params[:id])
+	erb :show
+end
+
+
+get '/logout' do
+	session.clear
+	flash[:notice] = "You have successfully signed out of your session."
+	erb :login
 end
 
 
@@ -87,6 +99,13 @@ post '/new-post' do
 	@post = Post.create!(user_id: current_user.id, body: params[:body], title: params[:title])
 
 	redirect '/home'
+end
+
+
+post '/new-post-profile' do
+	@post = Post.create!(user_id: current_user.id, body: params[:body], title: params[:title])
+
+	redirect '/profile'
 end
 
 
