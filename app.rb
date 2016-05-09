@@ -44,12 +44,6 @@ get '/members' do
 end
 
 
-get '/:id' do
-	@user = User.find(params[:id])
-	erb :show
-end
-
-
 get '/logout' do
 	session.clear
 	flash[:notice] = "You have successfully signed out of your session."
@@ -110,7 +104,8 @@ end
 
 
 post '/profile-update' do
-@user = current_user.update(fname: params[:fname], lname: params[:lname],email: params[:email], username: params[:username], password: params[:password], age: params[:age], location: params[:location])
+@user = current_user
+current_user.update(fname: params[:fname], lname: params[:lname],email: params[:email], username: params[:username], password: params[:password], age: params[:age], location: params[:location])
 		flash[:notice] = "Your profile has been updated."
 		redirect '/profile'
 end
@@ -122,6 +117,12 @@ get '/delete' do
 	session.clear
 	flash[:notice] = "Your account has been deleted."
 	redirect '/'
+end
+
+
+get '/:id' do
+	@user = User.find(params[:id])
+	erb :show
 end
 
 
