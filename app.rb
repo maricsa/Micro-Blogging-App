@@ -57,6 +57,12 @@ get '/profileupdate' do
 end 
 
 
+get '/postupdate/:id' do
+	@post = Post.find(params[:id])
+	erb :postupdate
+end
+
+
 get '/delete-account' do
 	@user = current_user
 	erb :accountdelete
@@ -64,11 +70,6 @@ end
 
 
 post '/sign-up' do
-
-	#THE CODE below is an attempt to validate. Fix this later if you have time.
-	# if params[:fname] = "" or params[:lname] = "" or params[:email] = "" or params[:username] = "" or params[:password] = "" or params[:age] = "" or params[:location] = ""
-	# 	flash[:alert] = "There was a problem signing you in."
-	# 	erb :login
 @user = User.create!(fname: params[:fname], lname: params[:lname],email: params[:email], username: params[:username], password: params[:password], age: params[:age], location: params[:location])
 	session[:user_id] = @user.id
 		flash[:notice] = "Thank you for signing up!"
@@ -111,6 +112,22 @@ current_user.update(fname: params[:fname], lname: params[:lname],email: params[:
 end
 
 
+post '/post-update' do
+	@post = Post.find(params[:post_id])
+	@post.update(user_id: current_user.id, title: params[:title], body: params[:body])
+		flash[:notice] = "Your post has been updated."
+		redirect '/profile'
+end
+
+
+get '/post-delete/:id' do
+	@post = Post.find(params[:id])
+	@post.delete
+		flash[:notice] = "Your post has been deleted."
+		redirect '/profile'
+end
+
+
 get '/delete' do
 	@user = current_user
 	@user.delete
@@ -124,8 +141,6 @@ get '/:id' do
 	@user = User.find(params[:id])
 	erb :show
 end
-
-
 
 
 

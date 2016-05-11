@@ -1,0 +1,14 @@
+<div id="profile-poster">
+	<form method="POST" action="/post-update">
+			<p>Title:</p>
+			<input type="hidden" name="post_id" value= <%= @post.id %> >
+			<textarea id="profile-poster-title" class='input' name='title' rows="1" cols='50' maxlength="20"></textarea>
+			<br>
+			Post: <textarea id="profile-poster-post" class="input" name="body" maxlength="150"></textarea>
+			<br>
+			<br>
+			<input id="button3" type="submit">	
+	</form>
+</div>
+
+<a href= <%="/post-delete/#{@post.id}"%> >Delete Post</a>
